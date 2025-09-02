@@ -2,7 +2,7 @@ const Tracklist = () => {
   return (
     <div className="mx-15">
       <h2 className="text-4xl font-bold mb-12">Tracklist</h2>
-      <ol start={1} className="list-decimal list-inside text-2xl font-bold flex flex-wrap gap-8 mb-12 text-neutral-700 ">
+      <ol className="list-decimal list-inside text-2xl font-bold flex flex-wrap gap-8 mb-12 text-neutral-700 ">
         <li>the 1</li>
         <li>cardigan</li>
         <li>the last great american dynasty</li>
