@@ -2,10 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 const Navbar = () => {
   return (
-    <div className="h-screen bg-gradient-to-b from-gray-950/100 to-gray-950/0 text-white ">
+    <div style={{
+      backgroundImage: "linear-gradient(to bottom, rgba(3,7,18,1), rgba(3,7,18,0)), url(/dummy-images/Folklore.webp)",
+    }}  
+    className="h-screen  text-white bg-cover bg-no-repeat bg-bottom">
       <div className="mx-15 flex justify-between max-w-full py-8 items-center ">
         <Image
-          src="/assets/folklore-logo-white.svg"
+          src="/dummy-images/folklore-logo-white.svg"
           width={200}
           height={200}
           alt="folklore-logo"
@@ -19,7 +22,7 @@ const Navbar = () => {
           </Link>
           <Link href={"/"}>
             <Image
-              src="/assets/cart.svg"
+              src="/dummy-images/cart.svg"
               width={40}
               height={40}
               alt="cart-logo"

@@ -6,7 +6,7 @@ const CardMusic = () => {
     <section className="grid grid-cols-12">
     <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
         <Image
-            src="/assets/folklore-cd.svg"
+            src="/dummy-images/folklore.webp"
             width={200}
             height={200}
             alt="folklore-cd"
@@ -17,7 +17,7 @@ const CardMusic = () => {
     </article> 
     <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
         <Image
-            src="/assets/folklore-vinyl.svg"
+            src="/dummy-images/folklore.webp"
             width={200}
             height={200}
             alt="folklore-vinyl"
