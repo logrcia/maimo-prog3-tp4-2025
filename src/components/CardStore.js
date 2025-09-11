@@ -6,7 +6,7 @@ const CardStore = () => {
     <section className="grid grid-cols-12">
     <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
         <Image
-            src="/assets/merch.svg"
+            src="/dummy-images/folklore-green-hoodie.webp"
             width={200}
             height={200}
             alt="folklore-cd"
@@ -17,7 +17,7 @@ const CardStore = () => {
     </article> 
     <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
         <Image
-            src="/assets/merch.svg"
+            src="/dummy-images/folklore-beige-hoodie.webp"
             width={200}
             height={200}
             alt="folklore-cd"
@@ -28,7 +28,7 @@ const CardStore = () => {
     </article> 
     <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
         <Image
-            src="/assets/merch.svg"
+            src="/dummy-images/folklore-gray-shirt.webp"
             width={200}
             height={200}
             alt="folklore-cd"
@@ -39,7 +39,7 @@ const CardStore = () => {
     </article> 
     <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
         <Image
-            src="/assets/merch.svg"
+            src="/dummy-images/folklore-black-hoodie.webp"
             width={200}
             height={200}
             alt="folklore-cd"
@@ -50,7 +50,7 @@ const CardStore = () => {
     </article> 
     <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
         <Image
-            src="/assets/merch.svg"
+            src="/dummy-images/folklore-white-shirt.webp"
             width={200}
             height={200}
             alt="folklore-cd"
@@ -61,7 +61,7 @@ const CardStore = () => {
     </article> 
     <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
         <Image
-            src="/assets/merch.svg"
+            src="/dummy-images/folklore-cardigan.png"
             width={200}
             height={200}
             alt="folklore-cd"
