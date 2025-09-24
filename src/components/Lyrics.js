@@ -4,10 +4,10 @@ const Lyrics = () => {
   return (
      <div className="relative w-full h-96 shadow-lg overflow-hidden flex items-center justify-center">
       <Image
-        src="/assets/background.svg"
+        src="/dummy-images/Forestswift.webp"
         alt="background"
         fill
-        className="object-cover"
+        className="object-cover object-[50%_30%]"
         priority
       />
 
