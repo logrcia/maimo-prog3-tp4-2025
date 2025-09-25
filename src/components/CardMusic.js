@@ -20,9 +20,9 @@ const CardMusic = () => {
     <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
         <Link href="/product/2">
         <Image
-            src="/dummy-images/folklore-vinyl.webp"
-            width={200}
-            height={200}
+            src="/dummy-images/folklore-vinyl.png"
+            width={245}
+            height={245}
             alt="folklore-vinyl"
         />
         <h3 className="text-xl mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">folklore vinyl</h3>
