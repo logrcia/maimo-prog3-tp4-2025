@@ -5,7 +5,7 @@ import { useState } from "react"
 const ProductContainer = ({id}) => {
   const [quantity, setQuantity] = useState(1);
   return (
-    <div className="flex mx-15 mt-15 justify-center items-center">
+    <div className="flex mx-15 mt-50 mb-50 justify-center items-center">
       <div className="w-[400px] h-[400px] bg-neutral-600"></div>
       <div className="ml-10">
       <div className="mb-8">
