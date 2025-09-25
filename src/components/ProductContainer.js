@@ -1,8 +1,11 @@
 'use client';
-import Navbar from '@/components/Navbar';
+import { useShopContext } from '@/app/contexts/ShopContext';
+
 
 import { useState } from "react"
 const ProductContainer = ({id}) => {
+  const { cart, addToCart } = useShopContext()
+  const isInCart = cart.some(p => p.id === product.id)
   const [quantity, setQuantity] = useState(1);
   return (
     <div className="flex mx-15 mt-50 mb-50 justify-center items-center">
@@ -23,8 +26,12 @@ const ProductContainer = ({id}) => {
 
       <p>Ships on or before September 8, 2025</p>
 
-      <button className="bg-black w-fit p-5 text-white py-3 rounded-full hover:bg-gray-800 transition px-12">
-        add to cart
+      <button className="bg-black w-fit p-5 text-white py-3 rounded-full hover:bg-gray-800 transition px-12"
+        onClick={() =>
+          addToCart(product.title, product.image, product.id, product.price)
+        }
+      >
+        {isInCart ? 'Quitar del carrito' : 'Agregar al carrito'}
       </button>
     </div>
     </div>

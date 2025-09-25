@@ -1,7 +1,11 @@
+'use client'
+import { useShopContext } from '@/app/contexts/ShopContext';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const CardStore = () => {
+    const { cart, addToCart } = useShopContext()
+    const isInCart = cart.some(p => p.id === product.id)
   return (
     <section className="grid grid-cols-12">
     <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
@@ -15,6 +19,13 @@ const CardStore = () => {
         />
         <h4 className="text-mg mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">lore ipsu</h4>
         <h4 className="text-mg mb-2 text-[#0a0a0a] min-h-[1rem] flex justify-right">19,99</h4>
+        <button
+        onClick={() =>
+          addToCart(product.title, product.image, product.id, product.price)
+        }
+      >
+        {isInCart ? 'Quitar del carrito' : 'Agregar al carrito'}
+      </button>
         </Link>
     </article> 
     <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
@@ -28,6 +39,13 @@ const CardStore = () => {
         />
         <h4 className="text-mg mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">lore ipsu</h4>
         <h4 className="text-mg mb-2 text-[#0a0a0a] min-h-[1rem] flex justify-right">19,99</h4>
+        <button
+        onClick={() =>
+          addToCart(product.title, product.image, product.id, product.price)
+        }
+      >
+        {isInCart ? 'Quitar del carrito' : 'Agregar al carrito'}
+      </button>
         </Link>
     </article> 
     <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
@@ -41,6 +59,13 @@ const CardStore = () => {
         />
         <h4 className="text-mg mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">lore ipsu</h4>
         <h4 className="text-mg mb-2 text-[#0a0a0a] min-h-[1rem] flex justify-right">19,99</h4>
+        <button
+        onClick={() =>
+          addToCart(product.title, product.image, product.id, product.price)
+        }
+      >
+        {isInCart ? 'Quitar del carrito' : 'Agregar al carrito'}
+      </button>
         </Link>
     </article> 
     <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
@@ -54,6 +79,13 @@ const CardStore = () => {
         />
         <h4 className="text-mg mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">lore ipsu</h4>
         <h4 className="text-mg mb-2 text-[#0a0a0a] min-h-[1rem] flex justify-right">19,99</h4>
+        <button
+        onClick={() =>
+          addToCart(product.title, product.image, product.id, product.price)
+        }
+      >
+        {isInCart ? 'Quitar del carrito' : 'Agregar al carrito'}
+      </button>
         </Link>
     </article> 
     <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
@@ -67,6 +99,13 @@ const CardStore = () => {
         />
         <h4 className="text-mg mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">lore ipsu</h4>
         <h4 className="text-mg mb-2 text-[#0a0a0a] min-h-[1rem] flex justify-right">19,99</h4>
+        <button
+        onClick={() =>
+          addToCart(product.title, product.image, product.id, product.price)
+        }
+      >
+        {isInCart ? 'Quitar del carrito' : 'Agregar al carrito'}
+      </button>
         </Link>
     </article> 
     <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
@@ -80,6 +119,13 @@ const CardStore = () => {
         />
         <h4 className="text-mg mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">lore ipsu</h4>
         <h4 className="text-mg mb-2 text-[#0a0a0a] min-h-[1rem] flex justify-right">19,99</h4>
+        <button
+        onClick={() =>
+          addToCart(product.title, product.image, product.id, product.price)
+        }
+      >
+        {isInCart ? 'Quitar del carrito' : 'Agregar al carrito'}
+      </button>
         </Link>
     </article>
     </section>
