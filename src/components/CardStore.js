@@ -1,133 +1,18 @@
 'use client'
-import { useShopContext } from '@/app/contexts/ShopContext';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const CardStore = () => {
-    const { cart, addToCart } = useShopContext()
-    const isInCart = cart.some(p => p.id === product.id)
+const CardStore = ({product}) => {
+   
+   
   return (
-    <section className="grid grid-cols-12">
-    <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
-        <Link href="/product/3">
-        <Image
-            src="/dummy-images/folklore-green-hoodie.webp"
-            width={200}
-            height={200}
-            alt="folklore-cd"
-            className="flex justify-center"
-        />
-        <h4 className="text-mg mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">lore ipsu</h4>
-        <h4 className="text-mg mb-2 text-[#0a0a0a] min-h-[1rem] flex justify-right">19,99</h4>
-        <button
-        onClick={() =>
-          addToCart(product.title, product.image, product.id, product.price)
-        }
-      >
-        {isInCart ? 'Quitar del carrito' : 'Agregar al carrito'}
-      </button>
-        </Link>
+    <section >
+    <article className='mb-5 ml-15'>
+      <Link href={`/product/${product._id}`}>
+        <h1>{product.name}</h1>
+      </Link>
     </article> 
-    <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
-        <Link href="/product/4">
-        <Image
-            src="/dummy-images/folklore-beige-hoodie.webp"
-            width={200}
-            height={200}
-            alt="folklore-cd"
-            className="flex justify-center"
-        />
-        <h4 className="text-mg mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">lore ipsu</h4>
-        <h4 className="text-mg mb-2 text-[#0a0a0a] min-h-[1rem] flex justify-right">19,99</h4>
-        <button
-        onClick={() =>
-          addToCart(product.title, product.image, product.id, product.price)
-        }
-      >
-        {isInCart ? 'Quitar del carrito' : 'Agregar al carrito'}
-      </button>
-        </Link>
-    </article> 
-    <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
-        <Link href="/product/5">
-        <Image
-            src="/dummy-images/folklore-gray-shirt.webp"
-            width={200}
-            height={200}
-            alt="folklore-cd"
-            className="flex justify-center"
-        />
-        <h4 className="text-mg mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">lore ipsu</h4>
-        <h4 className="text-mg mb-2 text-[#0a0a0a] min-h-[1rem] flex justify-right">19,99</h4>
-        <button
-        onClick={() =>
-          addToCart(product.title, product.image, product.id, product.price)
-        }
-      >
-        {isInCart ? 'Quitar del carrito' : 'Agregar al carrito'}
-      </button>
-        </Link>
-    </article> 
-    <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
-        <Link href="/product/6">
-        <Image
-            src="/dummy-images/folklore-black-hoodie.webp"
-            width={200}
-            height={200}
-            alt="folklore-cd"
-            className="flex justify-center"
-        />
-        <h4 className="text-mg mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">lore ipsu</h4>
-        <h4 className="text-mg mb-2 text-[#0a0a0a] min-h-[1rem] flex justify-right">19,99</h4>
-        <button
-        onClick={() =>
-          addToCart(product.title, product.image, product.id, product.price)
-        }
-      >
-        {isInCart ? 'Quitar del carrito' : 'Agregar al carrito'}
-      </button>
-        </Link>
-    </article> 
-    <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
-        <Link href="/product/7">
-        <Image
-            src="/dummy-images/folklore-white-shirt.webp"
-            width={200}
-            height={200}
-            alt="folklore-cd"
-            className="flex justify-center"
-        />
-        <h4 className="text-mg mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">lore ipsu</h4>
-        <h4 className="text-mg mb-2 text-[#0a0a0a] min-h-[1rem] flex justify-right">19,99</h4>
-        <button
-        onClick={() =>
-          addToCart(product.title, product.image, product.id, product.price)
-        }
-      >
-        {isInCart ? 'Quitar del carrito' : 'Agregar al carrito'}
-      </button>
-        </Link>
-    </article> 
-    <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
-        <Link href="/product/8">
-        <Image
-            src="/dummy-images/folklore-cardigan.png"
-            width={200}
-            height={200}
-            alt="folklore-cd"
-            className="flex justify-center"
-        />
-        <h4 className="text-mg mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">lore ipsu</h4>
-        <h4 className="text-mg mb-2 text-[#0a0a0a] min-h-[1rem] flex justify-right">19,99</h4>
-        <button
-        onClick={() =>
-          addToCart(product.title, product.image, product.id, product.price)
-        }
-      >
-        {isInCart ? 'Quitar del carrito' : 'Agregar al carrito'}
-      </button>
-        </Link>
-    </article>
+    
     </section>
   )
 }

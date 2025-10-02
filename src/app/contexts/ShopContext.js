@@ -1,28 +1,50 @@
 'use client'
-import { useState, useEffect, useContext, createContext } from 'react'
+import axios from 'axios'
+import { useState, useEffect, useContext, createContext, useCallback } from 'react'
 
 const ShopContext = createContext()
 
 export const ShopContextProvider = ({children}) => {
-	
+
 	//aca va mi logica y funciones custom
 	const [ cart, setCart ] = useState([])
-    const addToCart = (title, image, id, price) => {
-       const isInCart = cart.some(product => product.id === id)
-       
-       if(isInCart) {
-        setCart(currentCart => currentCart.filter(product => product.id !== id));
-       }else{
-        setCart(currentCart => [
-            ...currentCart, { title, image, id, price, quantity: 1 }
-        ]);
-       }
-    }
+	const [products, setProducts] = useState([])
+	const [product, setProduct] = useState([])
+
+	const getAllProducts = useCallback( async () => {
+		try {
+			//llamo a la api con los productos
+			const res = await axios.get(`http://localhost:4000/products`)
+			console.log('products', res.data)
+			setProducts(res.data.products)
+
+		} catch (error) {
+			console.log(error)
+		}
+	})
+
+	const getOneProduct = useCallback( async (id) => {
+		try {
+			const res = await axios.get(`http://localhost:4000/products/${id}`)
+			console.log('product', res.data)
+			setProduct(res.data.product)
+			return res.data.product
+		} catch (error) {
+			console.log(error)
+		}
+	}, [])
+
+	useEffect(()=>{
+		getAllProducts()
+	}, [])
+
 	return(
 	<ShopContext.Provider
 		value={{
             cart,
-            addToCart
+			products,
+			product,
+			getOneProduct
 		}}
 	>
 		{children}
