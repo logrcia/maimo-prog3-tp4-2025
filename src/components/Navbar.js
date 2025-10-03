@@ -17,7 +17,7 @@ const Navbar = () => {
         <Link href={"/"} className="mr-5 text-2xl font-bold">
           My account
         </Link>
-        <Link href={"/"}>
+        <Link href={"/cart"}>
           <Image
             src="/dummy-images/cart.svg"
             width={40}
