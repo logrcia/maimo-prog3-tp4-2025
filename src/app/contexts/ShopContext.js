@@ -11,11 +11,15 @@ export const ShopContextProvider = ({children}) => {
 	const [products, setProducts] = useState([])
 	const [product, setProduct] = useState([])
 
+	const handleAddToCart = (product) => {
+		
+		setCart([...cart, product])
+	}
+
 	const getAllProducts = useCallback( async () => {
 		try {
 			//llamo a la api con los productos
 			const res = await axios.get(`http://localhost:4000/products`)
-			console.log('products', res.data)
 			setProducts(res.data.products)
 
 		} catch (error) {
@@ -26,7 +30,6 @@ export const ShopContextProvider = ({children}) => {
 	const getOneProduct = useCallback( async (id) => {
 		try {
 			const res = await axios.get(`http://localhost:4000/products/${id}`)
-			console.log('product', res.data)
 			setProduct(res.data.product)
 			return res.data.product
 		} catch (error) {
@@ -38,10 +41,14 @@ export const ShopContextProvider = ({children}) => {
 		getAllProducts()
 	}, [])
 
+	const cartQty = () => cart.length
+
 	return(
 	<ShopContext.Provider
 		value={{
-            cart,
+			handleAddToCart,
+			cart,
+			cartQty,
 			products,
 			product,
 			getOneProduct
