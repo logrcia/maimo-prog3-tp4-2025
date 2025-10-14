@@ -12,8 +12,11 @@ export const ShopContextProvider = ({children}) => {
 	const [product, setProduct] = useState([])
 
 	const handleAddToCart = (product) => {
-		
-		setCart([...cart, product])
+		if(!product._id){
+			setCart([...cart, product])
+		}else{
+			console.log("ya lo agregaste!!!")
+		}
 	}
 
 	const getAllProducts = useCallback( async () => {
