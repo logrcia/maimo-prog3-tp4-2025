@@ -1,75 +1,88 @@
-'use client'
-import axios from 'axios'
-import { useState, useEffect, useContext, createContext, useCallback } from 'react'
+"use client";
+import axios from "axios";
+import {
+  useState,
+  useEffect,
+  useContext,
+  createContext,
+  useCallback,
+} from "react";
 
-const ShopContext = createContext()
+const ShopContext = createContext();
 
-export const ShopContextProvider = ({children}) => {
+export const ShopContextProvider = ({ children }) => {
+  //aca va mi logica y funciones custom
+  const [cart, setCart] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState([]);
 
-	//aca va mi logica y funciones custom
-	const [ cart, setCart ] = useState([])
-	const [products, setProducts] = useState([])
-	const [product, setProduct] = useState([])
+  const handleAddToCart = (product) => {
+    setCart((currentCart) => {
+      const existingProduct = currentCart.find(
+        (item) =>
+          item._id === product._id && item.selectedSize === product.selectedSize && item.selectedColor === product.selectedColor && item.selectedPrint === product.selectedPrint
+      );
 
-	const handleAddToCart = (product) => {
-		if(!product._id){
-			setCart([...cart, product])
-		}else{
-			console.log("ya lo agregaste!!!")
-		}
-	}
+      if (existingProduct) {
+        return currentCart.map((item) =>
+          item._id === product._id && item.selectedSize === product.selectedSize && item.selectedColor === product.selectedColor && item.selectedPrint === product.selectedPrint
+            ? { ...item, qty: item.qty + product.qty }
+            : item
+        );
+      } else {
+        return [...currentCart, product];
+      }
+    });
+  };
 
-	const getAllProducts = useCallback( async () => {
-		try {
-			//llamo a la api con los productos
-			const res = await axios.get(`http://localhost:4000/products`)
-			setProducts(res.data.products)
+  const getAllProducts = useCallback(async () => {
+    try {
+      //llamo a la api con los productos
+      const res = await axios.get(`http://localhost:4000/products`);
+      setProducts(res.data.products);
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
-		} catch (error) {
-			console.log(error)
-		}
-	})
+  const getOneProduct = useCallback(async (id) => {
+    try {
+      const res = await axios.get(`http://localhost:4000/products/${id}`);
+      setProduct(res.data.product);
+      return res.data.product;
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
-	const getOneProduct = useCallback( async (id) => {
-		try {
-			const res = await axios.get(`http://localhost:4000/products/${id}`)
-			setProduct(res.data.product)
-			return res.data.product
-		} catch (error) {
-			console.log(error)
-		}
-	}, [])
+  useEffect(() => {
+    getAllProducts();
+  }, []);
 
-	useEffect(()=>{
-		getAllProducts()
-	}, [])
+  const cartQty = () => cart.length;
 
-	const cartQty = () => cart.length
-
-	return(
-	<ShopContext.Provider
-		value={{
-			handleAddToCart,
-			cart,
-			cartQty,
-			products,
-			product,
-			getOneProduct
-		}}
-	>
-		{children}
-	</ShopContext.Provider>
-	
-	)
-
-}
+  return (
+    <ShopContext.Provider
+      value={{
+        handleAddToCart,
+        cart,
+        cartQty,
+        products,
+        product,
+        getOneProduct,
+      }}
+    >
+      {children}
+    </ShopContext.Provider>
+  );
+};
 
 export const useShopContext = () => {
-	const context = useContext(ShopContext)
-	if(!context){
-		throw new Error ('useShopContext must be used within a ShopContextProvider')
-	}
-	return context;
-}
+  const context = useContext(ShopContext);
+  if (!context) {
+    throw new Error("useShopContext must be used within a ShopContextProvider");
+  }
+  return context;
+};
 
-export default ShopContext
+export default ShopContext;

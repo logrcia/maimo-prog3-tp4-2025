@@ -11,7 +11,11 @@ const CartCard = ({ product }) => {
         alt={`${product.name}`}
         priority
         />
-    
+      <p>Cantidad: {product.qty}</p>
+      <p>Size: {product.selectedSize}</p>
+      <p>Color: {product.selectedColor}</p>
+      <p>Print: {product.selectedPrint}</p>
+      <p>Price: {product.selectedPrice}</p>
     </div>
   )
 }
