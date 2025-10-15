@@ -1,7 +1,10 @@
+'use client'
 import Image from "next/image";
 import Link from "next/link";
+import { useShopContext } from "@/app/contexts/ShopContext";
 
 const Navbar = () => {
+  const {cartQty} = useShopContext()
   return (
     <div className="fixed top-0 left-0 w-full flex justify-between items-center px-10 py-8 h-40 bg-gradient-to-b from-gray-950/100 to-gray-950/0 text-white z-50">
       <Image
@@ -25,6 +28,7 @@ const Navbar = () => {
             alt="cart-logo"
           />
         </Link>
+        <p>{cartQty()}</p>
       </div>
     </div>
   );
