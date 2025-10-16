@@ -2,6 +2,7 @@
 
 import { useShopContext } from "@/app/contexts/ShopContext";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import Image from "next/image";
 
 const ProductContainer = ({ params }) => {
@@ -95,20 +96,16 @@ const ProductContainer = ({ params }) => {
         />
       </div>
 
-      {/* Info y opciones */}
       <div className="ml-10">
-        {/* Nombre y precio */}
         <div className="mb-8">
           <h1 className="text-2xl font-bold">{product.name}</h1>
           <p className="text-xl mt-2">${selectedPrice}</p>
         </div>
 
-        {/* Descripción */}
         <div className="w-100 mb-10">
           <p>{product.description}</p>
         </div>
 
-        {/* Cantidad */}
         <div>
           <h2>Quantity</h2>
           <div className="px-4 py-2 border mt-2 w-fit mb-8">
@@ -140,7 +137,6 @@ const ProductContainer = ({ params }) => {
           </div>
         </div>
 
-        {/* Talles */}
         <div>
           {product.size && product.size.length > 0 ? (
             product.size.map((size) => (
@@ -159,7 +155,6 @@ const ProductContainer = ({ params }) => {
           )}
         </div>
 
-        {/* Colores */}
         <div>
           {product.color && product.color.length > 0 ? (
             product.color.map((color) => (
@@ -178,7 +173,6 @@ const ProductContainer = ({ params }) => {
           )}
         </div>
 
-        {/* Estampados */}
         <div>
           {[1, 2].map((print) => (
             <button
@@ -195,7 +189,6 @@ const ProductContainer = ({ params }) => {
 
         <p>Ships on or before September 8, 2025</p>
 
-        {/* Botón agregar al carrito */}
         <button
           className="bg-black text-white mt-5 w-full py-5 rounded-4xl cursor-pointer"
           onClick={() => {
@@ -205,7 +198,7 @@ const ProductContainer = ({ params }) => {
                 selectedSize,
                 selectedColor,
                 selectedPrint,
-              });
+              }); 
             } else {
               addToCart(product);
             }
@@ -213,6 +206,9 @@ const ProductContainer = ({ params }) => {
         >
           {isInCart ? "Remove from cart" : "Add to cart"}
         </button>
+        <div>
+          <Link href={`/checkout`}>checkout</Link>
+        </div>
       </div>
     </div>
   );

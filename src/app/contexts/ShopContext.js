@@ -75,6 +75,14 @@ export const ShopContextProvider = ({ children }) => {
 
   const cartQty = () => cart.length;
 
+  const addOrder = async (userValues) => {
+    const orderValues = {
+      user: userValues,
+      products: cart
+    }
+    console.log('my order is', orderValues)
+  }
+
   return (
     <ShopContext.Provider
       value={{
@@ -85,6 +93,7 @@ export const ShopContextProvider = ({ children }) => {
         product,
         getOneProduct,
         removeFromCart,
+        addOrder
       }}
     >
       {children}
