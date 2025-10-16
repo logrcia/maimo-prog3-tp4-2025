@@ -9,7 +9,7 @@ const ProductContainer = ({ params }) => {
 
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
-  const [selectedPrint, setSelectedPrint] = useState(1); // Primer estampado por defecto
+  const [selectedPrint, setSelectedPrint] = useState(""); // Primer estampado por defecto
   const [qty, setQty] = useState(1);
   const [selectedPrice, setSelectedPrice] = useState(0);
   const [image, setImage] = useState("");
@@ -32,6 +32,12 @@ const ProductContainer = ({ params }) => {
 }, [product]);
 
 useEffect(() => {
+  if (product?.print && product.print.length > 0) {
+    setSelectedPrint(product.print[0]); // asigna el primer color como default
+  }
+}, [product]);
+
+useEffect(() => {
   if (product?.price) {
     setSelectedPrice(product.price);
   }
@@ -42,8 +48,9 @@ useEffect(() => {
     
     if (!product?.name) return;
 
+    const printFormatted = selectedPrint.split(" ").join("")
     const colorFormatted = selectedColor ? selectedColor.split(" ").join("").toLowerCase() : "";
-    const newImage = `${product.name.toLowerCase()}${selectedPrint}${colorFormatted}.png`;
+    const newImage = `${product.name.split(" ").join("").toLowerCase()}${printFormatted}${colorFormatted}.png`;
 
     setImage(newImage);
   }, [product, selectedColor, selectedPrint]);
@@ -151,7 +158,7 @@ useEffect(() => {
         </div>
 
         {/* Colores */}
-        <div>
+        <div className="mb-4">
           {product.color && product.color.length > 0 ? (
             product.color.map((color) => (
               <button
@@ -171,17 +178,23 @@ useEffect(() => {
 
         {/* Estampados */}
         <div>
-          {[1, 2].map((print) => (
-            <button
-              key={print}
-              className={`px-4 py-2 mr-2 border mt-2 w-fit mb-8 cursor-pointer ${
+          <h2>Print</h2>
+          {product.print && product.print.length > 0 ? (
+            product.print.map((print) => (
+              <button
+                key={print}
+                className={`px-4 py-2 mr-2 border mt-2 w-fit mb-8 cursor-pointer ${
                 selectedPrint === print ? "bg-black text-white" : ""
               }`}
-              onClick={() => setSelectedPrint(print)}
+               onClick={() => setSelectedPrint(print)}
             >
-              Estampado {print}
-            </button>
-          ))}
+              {print}
+              </button>
+            ))
+          ) : (
+            <p>No print available</p>
+          )}
+          
         </div>
 
         <p>Ships on or before September 8, 2025</p>
