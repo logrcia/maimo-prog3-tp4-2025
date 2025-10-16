@@ -99,7 +99,7 @@ export const ShopContextProvider = ({ children }) => {
         getAllProducts,
         getOneProduct,
         removeFromCart,
-        addOrder
+        addOrder,
         getProductsByCategory
       }}
     >
