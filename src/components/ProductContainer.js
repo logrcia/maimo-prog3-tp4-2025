@@ -2,6 +2,7 @@
 
 import { useShopContext } from "@/app/contexts/ShopContext";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import Image from "next/image";
 
 const ProductContainer = ({ params }) => {
@@ -104,20 +105,16 @@ useEffect(() => {
         />
       </div>
 
-      {/* Info y opciones */}
       <div className="ml-10">
-        {/* Nombre y precio */}
         <div className="mb-8">
           <h1 className="text-2xl font-bold">{product.name}</h1>
           <p className="text-xl mt-2">${selectedPrice}</p>
         </div>
 
-        {/* Descripción */}
         <div className="w-100 mb-10">
           <p>{product.description}</p>
         </div>
 
-        {/* Cantidad */}
         <div>
           <h2>Quantity</h2>
           <div className="px-4 py-2 border mt-2 w-fit mb-8">
@@ -149,7 +146,6 @@ useEffect(() => {
           </div>
         </div>
 
-        {/* Talles */}
         <div>
           {product.size && product.size.length > 0 ? (
             product.size.map((size) => (
@@ -186,7 +182,7 @@ useEffect(() => {
             <p>No color available</p>
           )}
         </div>
-
+        
         {/* Estampados */}
         <div className="w-100">
           <h2 className="mb-2">Print</h2>
@@ -205,14 +201,13 @@ useEffect(() => {
           ) : (
             <p>No print available</p>
           )}
-          
+ 
         </div>
 
         <p className="mt-4 mb-4">Ships on or before September 8, 2025</p>
 
-        {/* Botón agregar al carrito */}
         <button
-          className="bg-black text-white mt-5 w-full py-5 rounded-4xl cursor-pointer"
+          className="bg-black text-white mt-5 w-full py-4 rounded-2xl font-semibold hover:bg-gray-400 hover:text-black transition-colors"
           onClick={() => {
             if (isInCart) {
               removeFromCart({
@@ -228,6 +223,14 @@ useEffect(() => {
         >
           {isInCart ? "Remove from cart" : "Add to cart"}
         </button>
+        <div className="mt-6">
+          <Link
+            href={`/checkout`}
+            className="block bg-gray-400 text-black w-full py-4 rounded-2xl text-center font-semibold hover:bg-gray-100 transition-colors"
+          >
+            Checkout
+          </Link>
+        </div>
       </div>
     </div>
   );
