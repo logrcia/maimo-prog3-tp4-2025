@@ -48,8 +48,8 @@ useEffect(() => {
     
     if (!product?.name) return;
 
-    const printFormatted = selectedPrint.split(" ").join("")
-    const colorFormatted = selectedColor ? selectedColor.split(" ").join("").toLowerCase() : "";
+    const printFormatted = String(selectedPrint || "").split(" ").join("");
+    const colorFormatted = String(selectedColor || "").split(" ").join("").toLowerCase();
     const newImage = `${product.name.split(" ").join("").toLowerCase()}${printFormatted}${colorFormatted}.png`;
 
     setImage(newImage);
