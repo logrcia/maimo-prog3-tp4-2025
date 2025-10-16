@@ -190,7 +190,7 @@ const ProductContainer = ({ params }) => {
         <p>Ships on or before September 8, 2025</p>
 
         <button
-          className="bg-black text-white mt-5 w-full py-5 rounded-4xl cursor-pointer"
+          className="bg-black text-white mt-5 w-full py-4 rounded-2xl font-semibold hover:bg-gray-400 hover:text-black transition-colors"
           onClick={() => {
             if (isInCart) {
               removeFromCart({
@@ -198,7 +198,7 @@ const ProductContainer = ({ params }) => {
                 selectedSize,
                 selectedColor,
                 selectedPrint,
-              }); 
+              });
             } else {
               addToCart(product);
             }
@@ -206,8 +206,13 @@ const ProductContainer = ({ params }) => {
         >
           {isInCart ? "Remove from cart" : "Add to cart"}
         </button>
-        <div>
-          <Link href={`/checkout`}>checkout</Link>
+        <div className="mt-6">
+          <Link
+            href={`/checkout`}
+            className="block bg-gray-400 text-black w-full py-4 rounded-2xl text-center font-semibold hover:bg-gray-100 transition-colors"
+          >
+            Checkout
+          </Link>
         </div>
       </div>
     </div>

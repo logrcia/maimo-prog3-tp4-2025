@@ -26,7 +26,7 @@ function validateEmptyText(value) {
     return error
 }
 
-export const CheckoutForm = ( {handleAddOrder} ) => (
+export const CheckoutForm = ({handleAddOrder}) => (
   <div className="flex justify-center items-center min-h-screen bg-[#b4b4b4] py-12">
     <div className="bg-[#e4e4e4] shadow-lg rounded-2xl p-8 w-full max-w-md">
       <h1 className="text-2xl font-semibold text-center text-gray-800 mb-8 tracking-wide">
