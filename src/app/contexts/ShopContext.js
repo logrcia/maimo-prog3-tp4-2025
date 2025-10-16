@@ -1,12 +1,6 @@
 "use client";
 import axios from "axios";
-import {
-  useState,
-  useEffect,
-  useContext,
-  createContext,
-  useCallback,
-} from "react";
+import { useState, useEffect, useContext, createContext, useCallback } from "react";
 
 const ShopContext = createContext();
 
@@ -55,6 +49,17 @@ export const ShopContextProvider = ({ children }) => {
     }
   }, []);
 
+  const getProductsByCategory = useCallback(async (category) => {
+    try {
+      const res = await axios.get(`http://localhost:4000/categories/${category}/products`);
+      console.log("API response:", res.data.products);
+      setProducts(res.data.products);
+      return res.data.products;
+    } catch (error) {
+      console.log(error);
+    }
+  }, [])
+
   useEffect(() => {
     getAllProducts();
   }, []);
@@ -69,7 +74,9 @@ export const ShopContextProvider = ({ children }) => {
         cartQty,
         products,
         product,
+        getAllProducts,
         getOneProduct,
+        getProductsByCategory
       }}
     >
       {children}

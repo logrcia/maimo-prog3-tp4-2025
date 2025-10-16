@@ -33,7 +33,7 @@ const ProductContainer = ({ params }) => {
 
 useEffect(() => {
   if (product?.print && product.print.length > 0) {
-    setSelectedPrint(product.print[0]); // asigna el primer color como default
+    setSelectedPrint(product.print[0]); // asigna el estampado color como default
   }
 }, [product]);
 
@@ -144,8 +144,8 @@ useEffect(() => {
             product.size.map((size) => (
               <button
                 key={size}
-                className={`px-4 py-2 mr-2 border mt-2 w-fit mb-8 cursor-pointer ${
-                  selectedSize === size ? "bg-black text-white" : ""
+                className={`px-4 py-2 mr-2 rounded-2xl mt-2 w-fit mb-8 cursor-pointer ${
+                  selectedSize === size ? "bg-neutral-800 text-white" : "border hover:bg-gray-300"
                 }`}
                 onClick={() => setSelectedSize(size)}
               >
@@ -163,8 +163,8 @@ useEffect(() => {
             product.color.map((color) => (
               <button
                 key={color}
-                className={`px-4 py-2 mr-2 border mt-2 w-fit mb-8 cursor-pointer ${
-                  selectedColor === color ? "bg-black text-white" : ""
+                className={`px-4 py-2 mr-2 rounded-2xl mt-2 w-fit mb-8 cursor-pointer ${
+                  selectedColor === color ? "bg-neutral-800 text-white" : "border hover:bg-gray-300"
                 }`}
                 onClick={() => setSelectedColor(color)}
               >
@@ -177,14 +177,14 @@ useEffect(() => {
         </div>
 
         {/* Estampados */}
-        <div>
-          <h2>Print</h2>
+        <div className="w-100">
+          <h2 className="mb-2">Print</h2>
           {product.print && product.print.length > 0 ? (
             product.print.map((print) => (
               <button
                 key={print}
-                className={`px-4 py-2 mr-2 border mt-2 w-fit mb-8 cursor-pointer ${
-                selectedPrint === print ? "bg-black text-white" : ""
+                className={`px-4 py-2 mr-2  rounded-2xl  w-fit mb-2 cursor-pointer ${
+                selectedPrint === print ? "bg-neutral-800 text-white" : "border hover:bg-gray-300"
               }`}
                onClick={() => setSelectedPrint(print)}
             >
@@ -197,7 +197,7 @@ useEffect(() => {
           
         </div>
 
-        <p>Ships on or before September 8, 2025</p>
+        <p className="mt-4 mb-4">Ships on or before September 8, 2025</p>
 
         {/* Botón agregar al carrito */}
         <button
