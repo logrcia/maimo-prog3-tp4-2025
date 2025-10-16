@@ -1,11 +1,12 @@
-'use client';
+"use client";
 
 import { useShopContext } from "@/app/contexts/ShopContext";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const ProductContainer = ({ params }) => {
-  const { getOneProduct, product, handleAddToCart } = useShopContext();
+  const { getOneProduct, product, handleAddToCart, removeFromCart, cart } =
+    useShopContext();
 
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
@@ -26,11 +27,16 @@ const ProductContainer = ({ params }) => {
   }, []);
 
   useEffect(() => {
-  if (product?.color && product.color.length > 0) {
-    setSelectedColor(product.color[0]); // asigna el primer color como default
-  }
-}, [product]);
+    if (product?.color && product.color.length > 0) {
+      setSelectedColor(product.color[0]); // asigna el primer color como default
+    }
+  }, [product]);
 
+  useEffect(() => {
+    if (product?.price) {
+      setSelectedPrice(product.price);
+    }
+  }, [product]);
 useEffect(() => {
   if (product?.print && product.print.length > 0) {
     setSelectedPrint(product.print[0]); // asigna el estampado color como default
@@ -45,9 +51,7 @@ useEffect(() => {
 
   // Actualizar imagen según color y estampado
   useEffect(() => {
-    
     if (!product?.name) return;
-
     const printFormatted = String(selectedPrint || "").split(" ").join("");
     const colorFormatted = String(selectedColor || "").split(" ").join("").toLowerCase();
     const newImage = `${product.name.split(" ").join("").toLowerCase()}${printFormatted}${colorFormatted}.png`;
@@ -57,7 +61,6 @@ useEffect(() => {
 
   // Función para agregar al carrito
   const addToCart = (product) => {
-  
     if (!selectedSize) {
       alert("Please select a size");
       return;
@@ -73,12 +76,20 @@ useEffect(() => {
       selectedSize,
       selectedColor,
       selectedPrint,
-      selectedPrice
+      selectedPrice,
+      image,
     };
-
 
     handleAddToCart(productToAdd);
   };
+
+  const isInCart = cart.some(
+    (item) =>
+      item._id === product._id &&
+      item.selectedSize === selectedSize &&
+      item.selectedColor === selectedColor &&
+      item.selectedPrint === selectedPrint
+  );
 
   return (
     <div className="flex mx-15 mt-50 mb-50 justify-center items-center">
@@ -202,9 +213,20 @@ useEffect(() => {
         {/* Botón agregar al carrito */}
         <button
           className="bg-black text-white mt-5 w-full py-5 rounded-4xl cursor-pointer"
-          onClick={() => addToCart(product)}
+          onClick={() => {
+            if (isInCart) {
+              removeFromCart({
+                ...product,
+                selectedSize,
+                selectedColor,
+                selectedPrint,
+              });
+            } else {
+              addToCart(product);
+            }
+          }}
         >
-          Add to cart
+          {isInCart ? "Remove from cart" : "Add to cart"}
         </button>
       </div>
     </div>

@@ -29,6 +29,20 @@ export const ShopContextProvider = ({ children }) => {
     });
   };
 
+  const removeFromCart = (product) => {
+  setCart((currentCart) =>
+    currentCart.filter(
+      (item) =>
+        !(
+          item._id === product._id &&
+          item.selectedSize === product.selectedSize &&
+          item.selectedColor === product.selectedColor &&
+          item.selectedPrint === product.selectedPrint
+        )
+    )
+  );
+};
+
   const getAllProducts = useCallback(async () => {
     try {
       //llamo a la api con los productos
@@ -76,6 +90,7 @@ export const ShopContextProvider = ({ children }) => {
         product,
         getAllProducts,
         getOneProduct,
+        removeFromCart,
         getProductsByCategory
       }}
     >
