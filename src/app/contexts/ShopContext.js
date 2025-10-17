@@ -46,7 +46,7 @@ export const ShopContextProvider = ({ children }) => {
   const getAllProducts = useCallback(async () => {
     try {
       //llamo a la api con los productos
-      const res = await axios.get(`http://localhost:4000/products`);
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products`);
       setProducts(res.data.products);
     } catch (error) {
       console.log(error);
@@ -55,7 +55,7 @@ export const ShopContextProvider = ({ children }) => {
 
   const getOneProduct = useCallback(async (id) => {
     try {
-      const res = await axios.get(`http://localhost:4000/products/${id}`);
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products/${id}`);
       setProduct(res.data.product);
       return res.data.product;
     } catch (error) {
@@ -65,7 +65,7 @@ export const ShopContextProvider = ({ children }) => {
 
   const getProductsByCategory = useCallback(async (category) => {
     try {
-      const res = await axios.get(`http://localhost:4000/categories/${category}/products`);
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/categories/${category}/products`);
       console.log("API response:", res.data.products);
       setProducts(res.data.products);
       return res.data.products;
@@ -79,7 +79,7 @@ export const ShopContextProvider = ({ children }) => {
   }, []);
 
   const cartQty = () => cart.length;
-  
+
 
   const addOrder = async (userValues) => {
     const orderValues = {

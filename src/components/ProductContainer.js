@@ -11,12 +11,12 @@ const ProductContainer = ({ params }) => {
 
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
-  const [selectedPrint, setSelectedPrint] = useState(""); // Primer estampado por defecto
+  const [selectedPrint, setSelectedPrint] = useState(""); 
   const [qty, setQty] = useState(1);
   const [selectedPrice, setSelectedPrice] = useState(0);
   const [image, setImage] = useState("");
 
-  // Traer el producto de la API
+  // trae el producto de la API
   useEffect(() => {
     const fetchProduct = async () => {
       if (!params) return;
@@ -50,7 +50,7 @@ useEffect(() => {
   }
 }, [product]);
 
-  // Actualizar imagen según color y estampado
+  // actualizar imagen según color y estampado
   useEffect(() => {
     if (!product?.name) return;
     const printFormatted = String(selectedPrint || "").split(" ").join("");
@@ -60,7 +60,7 @@ useEffect(() => {
     setImage(newImage);
   }, [product, selectedColor, selectedPrint]);
 
-  // Función para agregar al carrito
+  // agregar al carrito
   const addToCart = (product) => {
     if (!selectedSize) {
       alert("Please select a size");
@@ -94,7 +94,7 @@ useEffect(() => {
 
   return (
     <div className="flex mx-15 mt-50 mb-50 justify-center items-center">
-      {/* Imagen del producto */}
+      
       <div className="w-[600px] h-[600px]">
         <Image
           src={`/dummy-images/products/${image}`}
@@ -164,7 +164,7 @@ useEffect(() => {
           )}
         </div>
 
-        {/* Colores */}
+      
         <div className="mb-4">
           {product.color && product.color.length > 0 ? (
             product.color.map((color) => (
@@ -183,7 +183,7 @@ useEffect(() => {
           )}
         </div>
         
-        {/* Estampados */}
+
         <div className="w-100">
           <h2 className="mb-2">Print</h2>
           {product.print && product.print.length > 0 ? (
