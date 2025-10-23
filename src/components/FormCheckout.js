@@ -36,7 +36,6 @@ export const CheckoutForm = ({handleAddOrder}) => (
       <Formik
         initialValues={{ username: "", email: "", company: "" }}
         onSubmit={(values) => {
-          console.log(values);
           handleAddOrder(values);
         }}
       >
@@ -51,6 +50,8 @@ export const CheckoutForm = ({handleAddOrder}) => (
               </label>
               <Field
                 name="email"
+                id="email"
+                autoComplete="email"
                 validate={validateEmail}
                 placeholder="you@example.com"
                 className="w-full px-4 py-2 bg-[#d9d9d9] border border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-600"
@@ -71,6 +72,8 @@ export const CheckoutForm = ({handleAddOrder}) => (
               </label>
               <Field
                 name="username"
+                autoComplete="username"
+                id="username"
                 validate={validateUsername}
                 placeholder="Your username"
                 className="w-full px-4 py-2 bg-[#d9d9d9] border border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-600"
@@ -91,6 +94,8 @@ export const CheckoutForm = ({handleAddOrder}) => (
               </label>
               <Field
                 name="company"
+                autoComplete="organization"
+                id="company"
                 validate={validateEmptyText}
                 placeholder="Your company"
                 className="w-full px-4 py-2 bg-[#d9d9d9] border border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-600"

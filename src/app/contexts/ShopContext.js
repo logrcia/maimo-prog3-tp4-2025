@@ -80,14 +80,44 @@ export const ShopContextProvider = ({ children }) => {
 
   const cartQty = () => cart.length;
 
-
+  const clearCart = () => {
+    setCart([])
+}
+  
   const addOrder = async (userValues) => {
+
+    const reducedCart = cart.map(product => {
+      const prod = {
+        name: product.name,
+        _id: product._id,
+        qty: product.qty,
+        price: product.price
+      }
+
+      return prod
+    })
+
+    const total = reducedCart.reduce((sum, { qty, price = 0 }) => sum + qty * price, 0);
+   
+    const orderNumber = `ORD-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+
     const orderValues = {
       user: userValues,
-      products: cart
+      products: reducedCart,
+      total,
+      orderNumber
     }
     console.log('my order is', orderValues)
-  }
+
+
+    try {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/orders`, orderValues)
+      console.log(response.data);
+      return orderValues
+    } catch (error) {
+      console.log(error)
+    }
+  };
 
   return (
     <ShopContext.Provider
@@ -101,7 +131,8 @@ export const ShopContextProvider = ({ children }) => {
         getOneProduct,
         removeFromCart,
         addOrder,
-        getProductsByCategory
+        getProductsByCategory,
+        clearCart
       }}
     >
       {children}

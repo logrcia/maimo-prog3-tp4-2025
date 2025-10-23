@@ -62,11 +62,11 @@ useEffect(() => {
 
   // agregar al carrito
   const addToCart = (product) => {
-    if (!selectedSize) {
+    if (product.size.length > 0 && !selectedSize) {
       alert("Please select a size");
       return;
     }
-    if (!selectedColor) {
+    if (product.color.length > 0 && !selectedColor) {
       alert("Please select a color");
       return;
     }

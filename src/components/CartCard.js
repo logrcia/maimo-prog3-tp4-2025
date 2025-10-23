@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useShopContext } from "@/app/contexts/ShopContext";
 
 const CartCard = ({ product }) => {
-  const { removeFromCart } = useShopContext(); // solo sacamos removeFromCart del context
+  const { removeFromCart } = useShopContext(); 
 
   return (
     <div className="flex flex-col justify-between bg-stone-300 text-black m-3 p-5 w-[300px] rounded-3xl flex-shrink-0 shadow-xl/20">

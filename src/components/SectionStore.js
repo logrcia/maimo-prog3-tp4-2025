@@ -1,7 +1,7 @@
 'use client'
 import CardStore from "@/components/CardStore";
 import { useShopContext } from "@/app/contexts/ShopContext";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const SectionStore = () => {
   const {products, getAllProducts, getProductsByCategory} = useShopContext();

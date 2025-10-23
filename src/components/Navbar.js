@@ -6,13 +6,17 @@ import { useShopContext } from "@/app/contexts/ShopContext";
 const Navbar = () => {
   const {cartQty} = useShopContext()
   return (
-    <div className="fixed top-0 left-0 w-full flex justify-between items-center px-10 py-8 h-40 bg-gradient-to-b from-gray-950/100 to-gray-950/0 text-white z-50">
+    <div className="fixed top-0 left-0 w-full flex justify-between items-center px-10 py-8 h-auto bg-gradient-to-b from-gray-950/100 to-gray-950/0 text-white z-50">
+      <div className="w-auto h-auto">
       <Image
+        className="w-auto h-auto"
         src="/dummy-images/folklore-logo-white.svg"
         width={200}
         height={200}
         alt="folklore-logo"
+        priority
       />
+      </div>
       <div className="flex items-center">
         <Link href={"/"} className="mr-5 text-2xl font-bold">
           Home
