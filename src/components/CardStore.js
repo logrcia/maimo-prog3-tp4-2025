@@ -1,87 +1,27 @@
+'use client'
 import Image from 'next/image';
 import Link from 'next/link';
 
-const CardStore = () => {
+const CardStore = ({product}) => {
+   
+   
   return (
-    <section className="grid grid-cols-12">
-    <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
-        <Link href="/product/3">
+    <section >
+      
+    <article className="flex flex-wrap justify-between bg-stone-300 text-neutral-800 m-3 p-5 w-[300px]  rounded-3xl shadow-xl/20">
+      <Link href={`/product/${product._id}`}>
+        <h1 className='font-bold text-lg'>{product.name}</h1>
         <Image
-            src="/dummy-images/folklore-green-hoodie.webp"
-            width={200}
-            height={200}
-            alt="folklore-cd"
-            className="flex justify-center"
+        src={`/dummy-images/products/${product.image[0]}`}
+        width={300}
+        height={300}
+        alt={`${product.name}`}
+        priority
         />
-        <h4 className="text-mg mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">lore ipsu</h4>
-        <h4 className="text-mg mb-2 text-[#0a0a0a] min-h-[1rem] flex justify-right">19,99</h4>
-        </Link>
+        <p>${product.price}</p>
+      </Link>
     </article> 
-    <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
-        <Link href="/product/4">
-        <Image
-            src="/dummy-images/folklore-beige-hoodie.webp"
-            width={200}
-            height={200}
-            alt="folklore-cd"
-            className="flex justify-center"
-        />
-        <h4 className="text-mg mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">lore ipsu</h4>
-        <h4 className="text-mg mb-2 text-[#0a0a0a] min-h-[1rem] flex justify-right">19,99</h4>
-        </Link>
-    </article> 
-    <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
-        <Link href="/product/5">
-        <Image
-            src="/dummy-images/folklore-gray-shirt.webp"
-            width={200}
-            height={200}
-            alt="folklore-cd"
-            className="flex justify-center"
-        />
-        <h4 className="text-mg mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">lore ipsu</h4>
-        <h4 className="text-mg mb-2 text-[#0a0a0a] min-h-[1rem] flex justify-right">19,99</h4>
-        </Link>
-    </article> 
-    <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
-        <Link href="/product/6">
-        <Image
-            src="/dummy-images/folklore-black-hoodie.webp"
-            width={200}
-            height={200}
-            alt="folklore-cd"
-            className="flex justify-center"
-        />
-        <h4 className="text-mg mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">lore ipsu</h4>
-        <h4 className="text-mg mb-2 text-[#0a0a0a] min-h-[1rem] flex justify-right">19,99</h4>
-        </Link>
-    </article> 
-    <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
-        <Link href="/product/7">
-        <Image
-            src="/dummy-images/folklore-white-shirt.webp"
-            width={200}
-            height={200}
-            alt="folklore-cd"
-            className="flex justify-center"
-        />
-        <h4 className="text-mg mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">lore ipsu</h4>
-        <h4 className="text-mg mb-2 text-[#0a0a0a] min-h-[1rem] flex justify-right">19,99</h4>
-        </Link>
-    </article> 
-    <article className="col-span-3 rounded-3xl p-3 flex-col justify-between h-[500px] mx-15">
-        <Link href="/product/8">
-        <Image
-            src="/dummy-images/folklore-cardigan.png"
-            width={200}
-            height={200}
-            alt="folklore-cd"
-            className="flex justify-center"
-        />
-        <h4 className="text-mg mb-2 text-[#0a0a0a] font-bold min-h-[1rem] flex justify-right">lore ipsu</h4>
-        <h4 className="text-mg mb-2 text-[#0a0a0a] min-h-[1rem] flex justify-right">19,99</h4>
-        </Link>
-    </article>
+    
     </section>
   )
 }

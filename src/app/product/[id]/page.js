@@ -1,9 +1,9 @@
 import ProductContainer from "@/components/ProductContainer"
 
-const page = ({ params }) => {
-    const { id } = params;
+const page = async ({ params }) => {
+    const { id } = await params;
   return (
-    <div><ProductContainer id={id} /></div>
+    <div><ProductContainer params={params} /></div>
   )
 }
 
